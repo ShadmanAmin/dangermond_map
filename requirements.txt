@@ -1,0 +1,5 @@
+geemap
+geopandas
+xarray
+solara
+huggingface_hub
