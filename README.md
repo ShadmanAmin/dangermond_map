@@ -1,12 +1,11 @@
 ---
 title: Dangermond Interactive Map
 emoji: 🌳
-colorFrom: blue
-colorTo: purple
+Web Service: Render
 sdk: docker
 pinned: false
 license: mit
-app_port: 8765
+app_port: Rand
 ---
 
 ## Earth Engine Web App
