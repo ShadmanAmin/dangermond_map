@@ -37,11 +37,32 @@ class CustomMap(leafmap.Map):
         )
         # Shapefile layers
         self.add_shp('/home/jovyan/src/tree_shapefiles/tree1.shp', layer_name='tree1')
+        self.add_shp('/home/joyvan/src/tree_shapefiles/tree2.shp', layer_name='tree2')
         self.add_shp('/home/jovyan/src/tree_shapefiles/tree3.shp', layer_name='tree3')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree4.shp', layer_name='tree4')
+        self.add_shp('/home/joyvan/src/tree_shapefiles/tree5.shp', layer_name='tree5')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree6.shp', layer_name='tree6')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree7.shp', layer_name='tree7')
+        self.add_shp('/home/joyvan/src/tree_shapefiles/tree8.shp', layer_name='tree8')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree9.shp', layer_name='tree9')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree10.shp', layer_name='tree10')
+        self.add_shp('/home/joyvan/src/tree_shapefiles/tree11.shp', layer_name='tree11')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree12.shp', layer_name='tree12')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree13.shp', layer_name='tree13')
+        self.add_shp('/home/joyvan/src/tree_shapefiles/tree14.shp', layer_name='tree14')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree15.shp', layer_name='tree15')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree16.shp', layer_name='tree16')
+        self.add_shp('/home/joyvan/src/tree_shapefiles/tree17.shp', layer_name='tree17')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree18.shp', layer_name='tree18')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree19.shp', layer_name='tree19')
         self.add_shp('/home/jovyan/src/tree_shapefiles/base_station.shp', layer_name='base_station')
         # Manually find GeoJSON layers by name
         self.tree1_layer = next(
             (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree1' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree2_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree2' and isinstance(ly, GeoJSON)),
             None
         )
         self.tree3_layer = next(
