@@ -2,8 +2,9 @@ import leafmap
 import solara
 import rasterio
 from ipyleaflet import Popup, GeoJSON
-from ipywidgets import HTML, VBox, Button, Layout, Image as WImage
+from ipywidgets import HTML, VBox, Button, HBox, Layout, Image as WImage
 from shapely.geometry import shape
+from IPython.display import display
 
 zoom = solara.reactive(6)
 center = solara.reactive([34.5, -120.47])
@@ -69,6 +70,70 @@ class CustomMap(leafmap.Map):
             (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree3' and isinstance(ly, GeoJSON)),
             None
         )
+        self.tree4_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree4' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree5_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree5' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree6_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree6' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree7_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree7' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree8_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree8' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree9_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree9' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree10_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree10' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree11_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree11' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree12_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree12' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree13_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree13' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree14_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree14' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree15_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree15' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree16_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree16' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree17_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree17' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree18_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree18' and isinstance(ly, GeoJSON)),
+            None
+        )
+        self.tree19_layer = next(
+            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree19' and isinstance(ly, GeoJSON)),
+            None
+        )
         self.base_station_layer = next(
             (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='base_station' and isinstance(ly, GeoJSON)),
             None
@@ -76,33 +141,114 @@ class CustomMap(leafmap.Map):
         # Attach click handlers
         if self.tree1_layer:
             self.tree1_layer.on_click(self.on_tree1_click)
+        if self.tree2_layer:
+            self.tree2_layer.on_click(self.on_tree2_click)
         if self.tree3_layer:
             self.tree3_layer.on_click(self.on_tree3_click)
+        if self.tree4_layer:
+            self.tree4_layer.on_click(self.on_tree4_click)
+        if self.tree5_layer:
+            self.tree5_layer.on_click(self.on_tree5_click)
+        if self.tree6_layer:
+            self.tree6_layer.on_click(self.on_tree6_click)
+        if self.tree7_layer:
+            self.tree7_layer.on_click(self.on_tree7_click)
+        if self.tree8_layer:
+            self.tree8_layer.on_click(self.on_tree8_click)
+        if self.tree9_layer:
+            self.tree9_layer.on_click(self.on_tree9_click)
+        if self.tree10_layer:
+            self.tree10_layer.on_click(self.on_tree10_click)
+        if self.tree11_layer:
+            self.tree11_layer.on_click(self.on_tree11_click)
+        if self.tree12_layer:
+            self.tree12_layer.on_click(self.on_tree12_click)
+        if self.tree13_layer:
+            self.tree13_layer.on_click(self.on_tree13_click)
+        if self.tree14_layer:
+            self.tree14_layer.on_click(self.on_tree14_click)
+        if self.tree15_layer:
+            self.tree15_layer.on_click(self.on_tree15_click)
+        if self.tree16_layer:
+            self.tree16_layer.on_click(self.on_tree16_click)
+        if self.tree17_layer:
+            self.tree17_layer.on_click(self.on_tree17_click)
+        if self.tree18_layer:
+            self.tree18_layer.on_click(self.on_tree18_click)
         if self.base_station_layer:
             self.base_station_layer.on_click(self.on_base_click)
         # Add layer control to map
         self.add_layer_control()
 
+
     def on_tree1_click(self, event, feature, **kwargs):
+
+        # extract coordinates
         geom = feature['geometry']
         if geom['type'] == 'Point':
             lon, lat = geom['coordinates']
         else:
             centroid = shape(geom).centroid
             lon, lat = centroid.x, centroid.y
-        # Title and image
-        title = HTML(value="<b>HAH THIS IS DANGERMOND!</b>")
-        img_url = feature['properties'].get(
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
             'img_url',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Jack_Dangermond_in_2012.jpg/250px-Jack_Dangermond_in_2012.jpg'
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
         )
-        image = HTML(value=f"""
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 009</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
             <div style="text-align:center">
-              <img src="{img_url}" style="width:auto; height:auto; display:block; margin:auto;">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
-        """)
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
         close_btn = Button(description='Close', button_style='danger')
-        container = VBox([title, image, close_btn], layout=Layout(width='auto', height='auto', align_items='center'))
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
         popup = Popup(
             location=(lat, lon),
             child=container,
@@ -114,49 +260,1386 @@ class CustomMap(leafmap.Map):
             min_width=500,
             min_height=500,
         )
+        self.add(popup)
+    def on_tree2_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree XXX</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
         def _on_close_clicked(btn):
             self.remove_layer(popup)
         close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
         self.add(popup)
 
     def on_tree3_click(self, event, feature, **kwargs):
-        geom = feature['geometry']
-        if geom['type'] == 'Point':
-            lon, lat = geom['coordinates']
-        else:
-            centroid = shape(geom).centroid
-            lon, lat = centroid.x, centroid.y
-        # Load local image
-        with open('/home/jovyan/src/images/broken_tree.JPG', 'rb') as f:
-            img_bytes = f.read()
-        img_widget = WImage(value=img_bytes, format='jpg', layout=Layout(max_width='600px', max_height='400px'))
-        title = HTML(value="<b>Broken Tree!</b>")
-        close_btn = Button(description='Close', button_style='danger')
-        container = VBox([title, img_widget, close_btn], layout=Layout(width='auto', align_items='center'))
-        popup = Popup(location=(lat, lon), child=container, close_button=False, auto_close=False, close_on_click=False, close_on_escape_key=False, min_width=400, min_height=300)
-        def _on_close_clicked(btn):
-            self.remove_layer(popup)
-        close_btn.on_click(_on_close_clicked)
-        self.add(popup)
 
-    def on_base_click(self, event, feature, **kwargs):
+        # extract coordinates
         geom = feature['geometry']
         if geom['type'] == 'Point':
             lon, lat = geom['coordinates']
         else:
             centroid = shape(geom).centroid
             lon, lat = centroid.x, centroid.y
-        with open('/home/jovyan/src/images/solar.JPG', 'rb') as f:
-            img_bytes = f.read()
-        img_widget = WImage(value=img_bytes, format='jpg', layout=Layout(max_width='600px', max_height='400px'))
-        title = HTML(value="<b>Power Station</b>")
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 052</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
         close_btn = Button(description='Close', button_style='danger')
-        container = VBox([title, img_widget, close_btn], layout=Layout(width='auto', align_items='center'))
-        popup = Popup(location=(lat, lon), child=container, close_button=False, auto_close=False, close_on_click=False, close_on_escape_key=False, min_width=400, min_height=300)
         def _on_close_clicked(btn):
             self.remove_layer(popup)
         close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
         self.add(popup)
+    def on_tree4_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Broken Tree!</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree5_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 090</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree6_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 093</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree7_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 128</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree8_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 087</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree9_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 088</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree10_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 100</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree11_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 098</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree12_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 145</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree13_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 109</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree14_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 116</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree15_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 112</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree16_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 141</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree17_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 105</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_tree18_click(self, event, feature, **kwargs):
+
+        # extract coordinates
+        geom = feature['geometry']
+        if geom['type'] == 'Point':
+            lon, lat = geom['coordinates']
+        else:
+            centroid = shape(geom).centroid
+            lon, lat = centroid.x, centroid.y
+
+        # get both image URLs from properties
+        img1_url = feature['properties'].get(
+            'img_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+        )
+        img2_url = feature['properties'].get(
+            'plot_url',
+            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+        )
+
+        # title
+        title = HTML(value="<b>Tree 110</b>")
+
+        # image widget 
+        image = HTML()
+        image.value = f"""
+            <div style="text-align:center">
+            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            </div>
+        """
+
+        # swap button
+        toggle_btn = Button(description='→ View Plot', button_style='info')
+        showing_plot = {'value': False}
+
+        def _on_toggle_clicked(btn):
+            if showing_plot['value']:
+                # switch back to photo
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '→ View Plot'
+            else:
+                # switch to sap flux plot
+                image.value = f"""
+                    <div style="text-align:center">
+                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    </div>
+                """
+                toggle_btn.description = '← View Photo'
+            showing_plot['value'] = not showing_plot['value']
+
+        toggle_btn.on_click(_on_toggle_clicked)
+
+        # close button
+        close_btn = Button(description='Close', button_style='danger')
+        def _on_close_clicked(btn):
+            self.remove_layer(popup)
+        close_btn.on_click(_on_close_clicked)
+
+        # assemble popup content
+        container = VBox(
+            [title, image, HBox([toggle_btn, close_btn])],
+            layout=Layout(width='auto', height='auto', align_items='center')
+        )
+
+        popup = Popup(
+            location=(lat, lon),
+            child=container,
+            close_button=False,
+            auto_close=False,
+            close_on_escape_key=False,
+            max_width=1500,
+            max_height=1300,
+            min_width=500,
+            min_height=500,
+        )
+        self.add(popup)
+    def on_base_click(self, event, feature, **kwargs):
+            geom = feature['geometry']
+            if geom['type'] == 'Point':
+                lon, lat = geom['coordinates']
+            else:
+                centroid = shape(geom).centroid
+                lon, lat = centroid.x, centroid.y
+            with open('/home/jovyan/src/images/solar.JPG', 'rb') as f:
+                img_bytes = f.read()
+            img_widget = WImage(value=img_bytes, format='jpg', layout=Layout(max_width='600px', max_height='400px'))
+            title = HTML(value="<b>Power Station</b>")
+            close_btn = Button(description='Close', button_style='danger')
+            container = VBox([title, img_widget, close_btn], layout=Layout(width='auto', align_items='center'))
+            popup = Popup(location=(lat, lon), child=container, close_button=False, auto_close=False, close_on_click=False, close_on_escape_key=False, min_width=400, min_height=300)
+            def _on_close_clicked(btn):
+                self.remove_layer(popup)
+            close_btn.on_click(_on_close_clicked)
+            self.add(popup)
 
 # Solara Page element
 @solara.component
