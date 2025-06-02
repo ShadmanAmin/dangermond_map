@@ -37,103 +37,38 @@ class CustomMap(leafmap.Map):
             use_client = True
         )
         # Shapefile layers
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree1.shp', layer_name='tree1')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree2.shp', layer_name='tree2')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree3.shp', layer_name='tree3')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree4.shp', layer_name='tree4')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree5.shp', layer_name='tree5')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree6.shp', layer_name='tree6')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree7.shp', layer_name='tree7')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree8.shp', layer_name='tree8')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree9.shp', layer_name='tree9')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree10.shp', layer_name='tree10')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree11.shp', layer_name='tree11')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree12.shp', layer_name='tree12')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree13.shp', layer_name='tree13')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree14.shp', layer_name='tree14')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree15.shp', layer_name='tree15')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree16.shp', layer_name='tree16')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree17.shp', layer_name='tree17')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree18.shp', layer_name='tree18')
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree19.shp', layer_name='tree19')
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree1.shp', layer_name='tree1', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree2.shp', layer_name='tree2', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree3.shp', layer_name='tree3', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree4.shp', layer_name='tree4', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree5.shp', layer_name='tree5', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree6.shp', layer_name='tree6', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree7.shp', layer_name='tree7', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree8.shp', layer_name='tree8', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree9.shp', layer_name='tree9', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree10.shp', layer_name='tree10', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree11.shp', layer_name='tree11', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree12.shp', layer_name='tree12', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree13.shp', layer_name='tree13', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree14.shp', layer_name='tree14', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree15.shp', layer_name='tree15', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree16.shp', layer_name='tree16', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree17.shp', layer_name='tree17', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree18.shp', layer_name='tree18', info_mode=None)
+        self.add_shp('/home/jovyan/src/tree_shapefiles/tree19.shp', layer_name='tree19', info_mode=None)
         self.add_shp('/home/jovyan/src/tree_shapefiles/base_station.shp', layer_name='base_station')
         # Manually find GeoJSON layers by name
-        self.tree1_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree1' and isinstance(ly, GeoJSON)),
+        layer_names = ['tree1', 'tree2', 'tree3', 'tree4', 'tree5', 'tree6', 'tree7', 'tree8', 'tree9', 'tree10', 'tree11', 'tree12', 'tree13', 'tree14', 'tree15', 'tree16', 'tree17', 'tree18']
+        layer = next(
+            (
+            ly for ly in self.layers
+            if getattr(ly, 'name', None) == name
+            and isinstance(ly, GeoJSON)
+            ),
             None
         )
-        self.tree2_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree2' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree3_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree3' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree4_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree4' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree5_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree5' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree6_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree6' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree7_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree7' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree8_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree8' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree9_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree9' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree10_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree10' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree11_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree11' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree12_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree12' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree13_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree13' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree14_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree14' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree15_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree15' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree16_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree16' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree17_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree17' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree18_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree18' and isinstance(ly, GeoJSON)),
-            None
-        )
-        self.tree19_layer = next(
-            (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='tree19' and isinstance(ly, GeoJSON)),
-            None
-        )
+        setattr(self, f"{name}_layer", layer)
+        
         self.base_station_layer = next(
             (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='base_station' and isinstance(ly, GeoJSON)),
             None
@@ -198,7 +133,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/009.png'
         )
 
         # title
@@ -439,7 +374,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/013.png'
         )
 
         # title
@@ -519,7 +454,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/090.png'
         )
 
         # title
@@ -599,7 +534,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/093.png'
         )
 
         # title
@@ -679,7 +614,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/128.png'
         )
 
         # title
@@ -759,7 +694,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/087.png'
         )
 
         # title
@@ -839,7 +774,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/088.png'
         )
 
         # title
@@ -919,7 +854,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/100.png'
         )
 
         # title
@@ -999,7 +934,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/098.png'
         )
 
         # title
@@ -1079,7 +1014,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/145.png'
         )
 
         # title
@@ -1159,7 +1094,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/109.png'
         )
 
         # title
@@ -1239,7 +1174,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/116.png'
         )
 
         # title
@@ -1319,7 +1254,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/112.png'
         )
 
         # title
@@ -1399,7 +1334,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/141.png'
         )
 
         # title
@@ -1479,7 +1414,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/105.png'
         )
 
         # title
@@ -1559,7 +1494,7 @@ class CustomMap(leafmap.Map):
         )
         img2_url = feature['properties'].get(
             'plot_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_SAP_FLUX_PLOT_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/sapflow_images/110.png'
         )
 
         # title
