@@ -59,59 +59,30 @@ class CustomMap(leafmap.Map):
         self.add_shp('/home/jovyan/src/tree_shapefiles/base_station.shp', layer_name='base_station')
         # Manually find GeoJSON layers by name
         layer_names = ['tree1', 'tree2', 'tree3', 'tree4', 'tree5', 'tree6', 'tree7', 'tree8', 'tree9', 'tree10', 'tree11', 'tree12', 'tree13', 'tree14', 'tree15', 'tree16', 'tree17', 'tree18']
-        layer = next(
-            (
-            ly for ly in self.layers
-            if getattr(ly, 'name', None) == name
-            and isinstance(ly, GeoJSON)
-            ),
-            None
-        )
-        setattr(self, f"{name}_layer", layer)
+        for name in layer_names:
+            layer = next(
+                (
+                ly for ly in self.layers
+                if getattr(ly, 'name', None) == name
+                and isinstance(ly, GeoJSON)
+                ),
+                None
+            )
+            setattr(self, f"{name}_layer", layer)
         
         self.base_station_layer = next(
             (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='base_station' and isinstance(ly, GeoJSON)),
             None
         )
         # Attach click handlers
-        if self.tree1_layer:
-            self.tree1_layer.on_click(self.on_tree1_click)
-        if self.tree2_layer:
-            self.tree2_layer.on_click(self.on_tree2_click)
-        if self.tree3_layer:
-            self.tree3_layer.on_click(self.on_tree3_click)
-        if self.tree4_layer:
-            self.tree4_layer.on_click(self.on_tree4_click)
-        if self.tree5_layer:
-            self.tree5_layer.on_click(self.on_tree5_click)
-        if self.tree6_layer:
-            self.tree6_layer.on_click(self.on_tree6_click)
-        if self.tree7_layer:
-            self.tree7_layer.on_click(self.on_tree7_click)
-        if self.tree8_layer:
-            self.tree8_layer.on_click(self.on_tree8_click)
-        if self.tree9_layer:
-            self.tree9_layer.on_click(self.on_tree9_click)
-        if self.tree10_layer:
-            self.tree10_layer.on_click(self.on_tree10_click)
-        if self.tree11_layer:
-            self.tree11_layer.on_click(self.on_tree11_click)
-        if self.tree12_layer:
-            self.tree12_layer.on_click(self.on_tree12_click)
-        if self.tree13_layer:
-            self.tree13_layer.on_click(self.on_tree13_click)
-        if self.tree14_layer:
-            self.tree14_layer.on_click(self.on_tree14_click)
-        if self.tree15_layer:
-            self.tree15_layer.on_click(self.on_tree15_click)
-        if self.tree16_layer:
-            self.tree16_layer.on_click(self.on_tree16_click)
-        if self.tree17_layer:
-            self.tree17_layer.on_click(self.on_tree17_click)
-        if self.tree18_layer:
-            self.tree18_layer.on_click(self.on_tree18_click)
-        if self.base_station_layer:
-            self.base_station_layer.on_click(self.on_base_click)
+        pairs = []
+        for i in range(1, 19):
+            pairs.append((f"tree{i}_layer", f"on_tree{i}_click"))
+        pairs.append(("base_station_layer", "on_base_click"))
+        for layer_attr, handler_name in pairs:
+            layer_obj = getattr(self, layer_attr, None)
+            if layer_obj is not None:
+                getattr(layer_obj, "on_click")(getattr(self, handler_name))
         # Add layer control to map
         self.add_layer_control()
 
