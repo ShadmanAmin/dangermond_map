@@ -58,16 +58,18 @@ class CustomMap(leafmap.Map):
         self.add_shp('/home/jovyan/src/tree_shapefiles/tree19.shp', layer_name='tree19', info_mode=None)
         self.add_shp('/home/jovyan/src/tree_shapefiles/base_station.shp', layer_name='base_station')
         # Manually find GeoJSON layers by name
-        layer_names = ['tree1', 'tree2', 'tree3', 'tree4', 'tree5', 'tree6', 'tree7', 'tree8', 'tree9', 'tree10', 'tree11', 'tree12', 'tree13', 'tree14', 'tree15', 'tree16', 'tree17', 'tree18']
-        layer = next(
-            (
-            ly for ly in self.layers
-            if getattr(ly, 'name', None) == name
-            and isinstance(ly, GeoJSON)
-            ),
-            None
-        )
-        setattr(self, f"{name}_layer", layer)
+       layer_names = ['tree1', 'tree2', 'tree3', 'tree4', 'tree5', 'tree6', 'tree7', 'tree8', 'tree9', 'tree10', 'tree11', 'tree12', 'tree13', 'tree14', 'tree15', 'tree16', 'tree17', 'tree18']
+
+        for name in layer_names:
+            layer = next(
+                (
+                    ly for ly in self.layers
+                    if getattr(ly, 'name', None) == name and isinstance(ly, GeoJSON)
+                ),
+                None
+            )
+            setattr(self, f"{name}_layer", layer)
+
         
         self.base_station_layer = next(
             (ly for ly in self.layers if hasattr(ly, 'name') and ly.name=='base_station' and isinstance(ly, GeoJSON)),
