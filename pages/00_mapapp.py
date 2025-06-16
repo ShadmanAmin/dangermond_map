@@ -114,7 +114,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -127,7 +127,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -194,7 +194,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -207,7 +207,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -215,7 +215,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -275,7 +275,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -288,7 +288,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -296,7 +296,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -355,7 +355,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -368,7 +368,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -435,7 +435,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -448,7 +448,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -456,7 +456,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -515,7 +515,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -528,7 +528,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -536,7 +536,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -595,7 +595,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -608,7 +608,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -616,7 +616,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -674,8 +674,8 @@ class CustomMap(leafmap.Map):
         # image widget 
         image = HTML()
         image.value = f"""
-            <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+           <div style="text-align:center">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -688,7 +688,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -696,7 +696,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -755,7 +755,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -768,7 +768,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -776,7 +776,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -835,7 +835,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -848,7 +848,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -856,7 +856,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -915,7 +915,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -928,7 +928,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -936,7 +936,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -995,7 +995,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -1008,7 +1008,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -1016,7 +1016,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -1075,7 +1075,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -1088,7 +1088,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -1096,7 +1096,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -1155,7 +1155,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -1168,7 +1168,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -1176,7 +1176,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -1235,7 +1235,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -1248,7 +1248,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -1256,7 +1256,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -1315,7 +1315,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -1328,7 +1328,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -1336,7 +1336,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -1395,7 +1395,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -1408,7 +1408,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -1416,7 +1416,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
@@ -1475,7 +1475,7 @@ class CustomMap(leafmap.Map):
         image = HTML()
         image.value = f"""
             <div style="text-align:center">
-            <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+            <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
             </div>
         """
 
@@ -1488,7 +1488,7 @@ class CustomMap(leafmap.Map):
                 # switch back to photo
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img1_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img1_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '→ View Plot'
@@ -1496,7 +1496,7 @@ class CustomMap(leafmap.Map):
                 # switch to sap flux plot
                 image.value = f"""
                     <div style="text-align:center">
-                    <img src="{img2_url}" style="width:auto; height:auto; display:block; margin:auto;" id="tree-img">
+                    <img src="{img2_url}" style="max-width:100%; height:auto; display:block; margin:auto;" id="tree-img">
                     </div>
                 """
                 toggle_btn.description = '← View Photo'
