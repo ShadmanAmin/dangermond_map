@@ -100,7 +100,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_009.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -341,7 +341,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_013.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -421,7 +421,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_090.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -501,7 +501,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_093.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -581,7 +581,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_128.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -661,7 +661,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_087.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -741,7 +741,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_088.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -821,7 +821,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_100.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -901,7 +901,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_098.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -981,7 +981,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_145.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -1061,7 +1061,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_109.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -1141,7 +1141,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_116.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -1221,7 +1221,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_112.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -1301,7 +1301,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_141.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -1381,7 +1381,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_105.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
@@ -1461,7 +1461,7 @@ class CustomMap(leafmap.Map):
         # get both image URLs from properties
         img1_url = feature['properties'].get(
             'img_url',
-            'https://drive.google.com/uc?export=view&id=YOUR_TREE_PHOTO_FILE_ID'
+            'https://github.com/ShadmanAmin/dangermond_map/raw/emma/tree_images/tree_110.jpeg'
         )
         img2_url = feature['properties'].get(
             'plot_url',
