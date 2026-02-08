@@ -1,10 +1,15 @@
+from pathlib import Path
+
 import leafmap
 import solara
-import rasterio
 from ipyleaflet import Popup, GeoJSON
 from ipywidgets import HTML, VBox, Button, HBox, Layout, Image as WImage
 from shapely.geometry import shape
-from IPython.display import display
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+SRC_DIR = ROOT_DIR / "src"
+TREE_SHAPEFILES_DIR = SRC_DIR / "tree_shapefiles"
+IMAGES_DIR = SRC_DIR / "images"
 
 zoom = solara.reactive(6)
 center = solara.reactive([34.5, -120.47])
@@ -28,35 +33,27 @@ class CustomMap(leafmap.Map):
             url = 'https://huggingface.co/datasets/ShadmanAmin/armycamp-geotiffs/resolve/main/ArmyCamp_BGBA_cog.tif',
             bands = [1,2,3],
             name='ArmyCamp_BGBA',
-            use_client = True
+            use_client = True,
+            fit_bounds=False,
         )
         self.add_cog_layer(
             url = 'https://huggingface.co/datasets/ShadmanAmin/armycamp-geotiffs/resolve/main/ArmyCamp_RGBA_cog.tif',
             bands = [1,2,3],
             name='ArmyCamp_RGBA',
-            use_client = True
+            use_client = True,
+            fit_bounds=False,
         )
         # Shapefile layers
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree1.shp', layer_name='tree1', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree2.shp', layer_name='tree2', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree3.shp', layer_name='tree3', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree4.shp', layer_name='tree4', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree5.shp', layer_name='tree5', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree6.shp', layer_name='tree6', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree7.shp', layer_name='tree7', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree8.shp', layer_name='tree8', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree9.shp', layer_name='tree9', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree10.shp', layer_name='tree10', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree11.shp', layer_name='tree11', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree12.shp', layer_name='tree12', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree13.shp', layer_name='tree13', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree14.shp', layer_name='tree14', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree15.shp', layer_name='tree15', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree16.shp', layer_name='tree16', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree17.shp', layer_name='tree17', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree18.shp', layer_name='tree18', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/tree19.shp', layer_name='tree19', info_mode=None)
-        self.add_shp('/home/jovyan/src/tree_shapefiles/base_station.shp', layer_name='base_station')
+        for index in range(1, 20):
+            self._add_shapefile(
+                TREE_SHAPEFILES_DIR / f"tree{index}.shp",
+                layer_name=f"tree{index}",
+                info_mode=None,
+            )
+        self._add_shapefile(
+            TREE_SHAPEFILES_DIR / "base_station.shp",
+            layer_name="base_station",
+        )
         # Manually find GeoJSON layers by name
         layer_names = ['tree1', 'tree2', 'tree3', 'tree4', 'tree5', 'tree6', 'tree7', 'tree8', 'tree9', 'tree10', 'tree11', 'tree12', 'tree13', 'tree14', 'tree15', 'tree16', 'tree17', 'tree18']
         for name in layer_names:
@@ -86,6 +83,11 @@ class CustomMap(leafmap.Map):
         # Add layer control to map
         self.add_layer_control()
 
+    def _add_shapefile(self, path, layer_name, info_mode=None):
+        if path.exists():
+            self.add_shp(str(path), layer_name=layer_name, info_mode=info_mode)
+        else:
+            print(f"Warning: missing shapefile {path}")
 
     def on_tree1_click(self, event, feature, **kwargs):
 
@@ -1535,7 +1537,7 @@ class CustomMap(leafmap.Map):
             else:
                 centroid = shape(geom).centroid
                 lon, lat = centroid.x, centroid.y
-            with open('/home/jovyan/src/images/solar.JPG', 'rb') as f:
+            with open(IMAGES_DIR / "solar.JPG", 'rb') as f:
                 img_bytes = f.read()
             img_widget = WImage(value=img_bytes, format='jpg', layout=Layout(max_width='600px', max_height='400px'))
             title = HTML(value="<b>Power Station</b>")
